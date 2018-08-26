@@ -1,6 +1,6 @@
 //
 //  Solution.hpp
-//  unix
+//  newcoder
 //
 //  Created by maciejwang on 2018/8/25.
 //  Copyright © 2018年 maciejwang. All rights reserved.
