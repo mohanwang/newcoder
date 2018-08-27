@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 变态跳台阶
+    int jumpFloorII(int number);
     // 青蛙跳台阶
     int jumpFloor(int number);
     //

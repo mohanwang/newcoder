@@ -9,6 +9,20 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+// 推理公式，2^(number-1)
+int Solution::jumpFloorII(int number)
+{
+    if (number < 1) {
+        return 0;
+    }
+    int result = 1;
+    while (number-1 > 0) {
+        result = 2*result;
+        number--;
+    }
+    return result;
+}
+
 int Solution::jumpFloor(int number)
 {
     // 迭代实现4ms
