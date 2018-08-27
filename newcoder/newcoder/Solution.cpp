@@ -9,6 +9,49 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+int Solution::minNumberInRotateArray(vector<int> rotateArray)
+{
+    if (rotateArray.size() == 0) {
+        return 0;
+    }
+    int left = 0;
+    int right = rotateArray.size() - 1;
+    while (left < right) {
+        if (rotateArray[left] < rotateArray[right]) {
+            return rotateArray[left];
+        }
+        int mid = left + (right - left) / 2;
+        if (rotateArray[left] < rotateArray[mid]) {
+            left = mid;
+            continue;
+        } else if (rotateArray[left] > rotateArray[mid]) {
+            right = mid;
+        } else {
+            left++; // 顺序查找
+        }
+    }
+    
+    return rotateArray[left];
+}
+
+int Solution::minNumberInRotateArray1(vector<int> rotateArray)
+{
+    if (rotateArray.size() == 0) {
+        return 0;
+    }
+    int min = rotateArray[0];
+    for (size_t i = rotateArray.size() - 1; i > 1; i--) {
+        if (rotateArray[i] >= rotateArray[i-1]) {
+            if (min > rotateArray[i-1]) {
+                min = rotateArray[i-1];
+            }
+        } else {
+            break;
+        }
+    }
+    return min;
+}
+
 void Solution::push(int node)
 {
     stack1.push(node);

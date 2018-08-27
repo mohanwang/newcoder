@@ -30,6 +30,10 @@ struct ListNode {
 
 class Solution {
 public:
+    // 旋转数组的最小数字
+    int minNumberInRotateArray(vector<int> rotateArray);  // 二分法
+    int minNumberInRotateArray1(vector<int> rotateArray); // 逆序查找
+
     // 两个栈实现一个队列
     void push(int node);
     int pop();
