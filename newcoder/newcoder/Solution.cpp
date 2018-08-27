@@ -9,6 +9,33 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+int Solution::jumpFloor(int number)
+{
+    // 迭代实现4ms
+    if (number <= 1) {
+        return 1;
+    }
+    if (number == 2) {
+        return 2;
+    }
+    
+    int f1 = 1;
+    int f2 = 2;
+    while (number-- > 2) {
+        f2+=f1;
+        f1=f2-f1;
+    }
+    return f2;
+// 递归实现  400ms
+//    if (number <= 1) {
+//        return 1;
+//    }
+//    if (number == 2) {
+//        return 2;
+//    }
+//    return jumpFloor(number-1) + jumpFloor(number-2);
+}
+
 int Solution::Fibonacci(int n)
 {
     int a0 = 0, a1 = 1;

@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 青蛙跳台阶
+    int jumpFloor(int number);
     //
     int Fibonacci(int n);
     // 旋转数组的最小数字
