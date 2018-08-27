@@ -9,6 +9,17 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+void Solution::push(int node)
+{
+    return;
+}
+
+int Solution::pop()
+{
+    return 0;
+}
+
+
 /*
  1,2,4,7,3,5,6,8
  4,7,2,1,5,3,8,6

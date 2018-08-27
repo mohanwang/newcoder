@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -29,15 +30,30 @@ struct ListNode {
 
 class Solution {
 public:
+    // 两个栈实现一个队列
+    void push(int node);
+    int pop();
+    
+    // 二叉树重建
     TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin);
     
+    // 链表逆向输出
     vector<int> printListFromTailToHead(ListNode* head);
     vector<int> printListFromTailToHead1(ListNode* head);// 递归
 
+    // 字符串替换
     void replaceSpace(char *str,int length);
-        
+    
+    // 数组查找
     bool Find(int target, vector<vector<int> > array);
     bool Find0(int target, vector<vector<int> > array);
+    
+private:
+    stack<int> stack1;
+    stack<int> stack2;
 };
+
+
+
 
 #endif /* Solution_hpp */
