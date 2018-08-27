@@ -9,6 +9,25 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+int Solution::Fibonacci(int n)
+{
+    int a0 = 0, a1 = 1;
+    if (n == 0) {
+        return a0;
+    }
+    if (n == 1) {
+        return a1;
+    }
+    int an = 0;
+    for (int i = 2; i <= n; i++) {
+        an = a0 + a1;
+        a0 = a1;
+        a1 = an;
+    }
+
+    return an;
+}
+
 int Solution::minNumberInRotateArray(vector<int> rotateArray)
 {
     if (rotateArray.size() == 0) {

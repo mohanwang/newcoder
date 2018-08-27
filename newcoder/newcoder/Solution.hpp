@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    //
+    int Fibonacci(int n);
     // 旋转数组的最小数字
     int minNumberInRotateArray(vector<int> rotateArray);  // 二分法
     int minNumberInRotateArray1(vector<int> rotateArray); // 逆序查找
