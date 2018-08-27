@@ -9,6 +9,119 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+int Solution::jumpFloor(int number)
+{
+    // 迭代实现4ms
+    if (number <= 1) {
+        return 1;
+    }
+    if (number == 2) {
+        return 2;
+    }
+    
+    int f1 = 1;
+    int f2 = 2;
+    while (number-- > 2) {
+        f2+=f1;
+        f1=f2-f1;
+    }
+    return f2;
+// 递归实现  400ms
+//    if (number <= 1) {
+//        return 1;
+//    }
+//    if (number == 2) {
+//        return 2;
+//    }
+//    return jumpFloor(number-1) + jumpFloor(number-2);
+}
+
+int Solution::Fibonacci(int n)
+{
+    int a0 = 0, a1 = 1;
+    if (n == 0) {
+        return a0;
+    }
+    if (n == 1) {
+        return a1;
+    }
+    int an = 0;
+    for (int i = 2; i <= n; i++) {
+        an = a0 + a1;
+        a0 = a1;
+        a1 = an;
+    }
+
+    return an;
+}
+
+int Solution::minNumberInRotateArray(vector<int> rotateArray)
+{
+    if (rotateArray.size() == 0) {
+        return 0;
+    }
+    int left = 0;
+    int right = rotateArray.size() - 1;
+    while (left < right) {
+        if (rotateArray[left] < rotateArray[right]) {
+            return rotateArray[left];
+        }
+        int mid = left + (right - left) / 2;
+        if (rotateArray[left] < rotateArray[mid]) {
+            left = mid;
+            continue;
+        } else if (rotateArray[left] > rotateArray[mid]) {
+            right = mid;
+        } else {
+            left++; // 顺序查找
+        }
+    }
+    
+    return rotateArray[left];
+}
+
+int Solution::minNumberInRotateArray1(vector<int> rotateArray)
+{
+    if (rotateArray.size() == 0) {
+        return 0;
+    }
+    int min = rotateArray[0];
+    for (size_t i = rotateArray.size() - 1; i > 1; i--) {
+        if (rotateArray[i] >= rotateArray[i-1]) {
+            if (min > rotateArray[i-1]) {
+                min = rotateArray[i-1];
+            }
+        } else {
+            break;
+        }
+    }
+    return min;
+}
+
+void Solution::push(int node)
+{
+    stack1.push(node);
+    return;
+}
+
+int Solution::pop()
+{
+    int value;
+    if (stack2.empty()) {
+        while (!stack1.empty()) {
+            stack2.push(stack1.top());
+            stack1.pop();
+        }
+    }
+    if (!stack2.empty()) {
+        value = stack2.top();
+        stack2.pop();
+        return value;
+    }
+    return 0;
+}
+
+
 /*
  1,2,4,7,3,5,6,8
  4,7,2,1,5,3,8,6
