@@ -11,11 +11,24 @@
 
 void Solution::push(int node)
 {
+    stack1.push(node);
     return;
 }
 
 int Solution::pop()
 {
+    int value;
+    if (stack2.empty()) {
+        while (!stack1.empty()) {
+            stack2.push(stack1.top());
+            stack1.pop();
+        }
+    }
+    if (!stack2.empty()) {
+        value = stack2.top();
+        stack2.pop();
+        return value;
+    }
     return 0;
 }
 
