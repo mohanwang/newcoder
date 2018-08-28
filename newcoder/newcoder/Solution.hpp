@@ -30,6 +30,12 @@ struct ListNode {
 
 class Solution {
 public:
+    // 计算数字二进制中1的个数
+    int  NumberOf1(int n);
+    // 矩形覆盖
+    int rectCover(int number);
+    // 变态跳台阶
+    int jumpFloorII(int number);
     // 青蛙跳台阶
     int jumpFloor(int number);
     //

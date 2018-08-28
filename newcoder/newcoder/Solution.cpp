@@ -9,6 +9,61 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+// 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
+int Solution::NumberOf1(int n)
+{
+    int *pn = &n;
+    char *pc = (char *)pn;
+    cout << (char)(*pc) << endl;
+    cout << (char)(*(pc+1)) << endl;
+    cout << (char)(*(pc+2)) << endl;
+    cout << (char)(*(pc+3)) << endl;
+    
+    int count = 0;
+    while (n) {
+        if (n % 2 == 1) {
+            count++;
+        }
+        n /= 2;
+    }
+    return count;
+}
+
+// 推理， 同jumpFloor
+int Solution::rectCover(int number)
+{
+    if (number <= 0)
+        return 0;
+    if (number == 1) {
+        return 1;
+    }
+    if (number == 2) {
+        return 2;
+    }
+    
+    int f1 = 1;
+    int f2 = 2;
+    while (number-- > 2) {
+        f2+=f1;
+        f1=f2-f1;
+    }
+    return f2;
+}
+
+// 推理公式，2^(number-1)
+int Solution::jumpFloorII(int number)
+{
+    if (number < 1) {
+        return 0;
+    }
+    int result = 1;
+    while (number-1 > 0) {
+        result = 2*result;
+        number--;
+    }
+    return result;
+}
+
 int Solution::jumpFloor(int number)
 {
     // 迭代实现4ms
