@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 链表查找倒数第K
+    ListNode* FindKthToTail(ListNode* pListHead, unsigned int k);
     // 数组重排序
     void reOrderArray(vector<int> &array);
     // 计算数字二进制中1的个数

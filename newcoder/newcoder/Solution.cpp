@@ -9,6 +9,45 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+ListNode* Solution::FindKthToTail(ListNode* pListHead, unsigned int k)
+{
+    ListNode* ptr1 = pListHead;
+    ListNode* ptr2 = pListHead;
+    if (k < 1) return NULL;
+    for (int i = 1; i < k; i++) {
+        if (ptr1 && ptr1->next) {
+            ptr1 = ptr1->next;
+        } else {
+            return NULL;
+        }
+    }
+    
+    while (ptr1 && ptr1->next) {
+        ptr1 = ptr1->next;
+        ptr2 = ptr2->next;
+    }
+    
+    return ptr2;
+}
+// 遍历计数，然后找第n-k+1
+//ListNode* Solution::FindKthToTail(ListNode* pListHead, unsigned int k)
+//{
+//    int count = 0;
+//    ListNode* tmp = pListHead;
+//    while (tmp) {
+//        count++;
+//        tmp = tmp->next;
+//    }
+//    if (k > count) {
+//        return NULL;
+//    }
+//    tmp = pListHead;
+//    for (int i = 0; i != count - k; i++) {
+//        tmp = tmp->next;
+//    }
+//    return tmp;
+//}
+
 void Solution::reOrderArray(vector<int> &array)
 {
     int len = array.size();
