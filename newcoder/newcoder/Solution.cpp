@@ -9,6 +9,31 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+void Solution::reOrderArray(vector<int> &array)
+{
+    int len = array.size();
+    bool swapFlag = false;
+    for (int i = len - 1; i >= 0;) {
+        if (array[i] % 2 == 0) {
+            i--;
+            swapFlag = false;
+            continue;
+        }
+        for (int j = i; j >= 1; j--) {
+            if (array[j] % 2 == 1 && array[j - 1] % 2 ==0) {
+                int tmp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = tmp;
+                swapFlag = true;
+            }
+        }
+        if (!swapFlag) {
+            break;
+        }
+    }
+    return;
+}
+
 int Solution::NumberOf1(int n)
 {
     int count = 0;

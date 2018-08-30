@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 数组重排序
+    void reOrderArray(vector<int> &array);
     // 计算数字二进制中1的个数
     int  NumberOf1(int n);
     // 矩形覆盖
