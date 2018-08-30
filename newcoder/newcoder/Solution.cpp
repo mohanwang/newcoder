@@ -9,25 +9,44 @@
 #include "Solution.hpp"
 #include <algorithm>
 
-// 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
 int Solution::NumberOf1(int n)
 {
-    int *pn = &n;
-    char *pc = (char *)pn;
-    cout << (char)(*pc) << endl;
-    cout << (char)(*(pc+1)) << endl;
-    cout << (char)(*(pc+2)) << endl;
-    cout << (char)(*(pc+3)) << endl;
-    
     int count = 0;
     while (n) {
-        if (n % 2 == 1) {
+        if (n & 0x80000000) {
             count++;
         }
-        n /= 2;
+        n = n << 1;
     }
+    
     return count;
 }
+//{
+//    int count = 0;
+//    while (n) {
+//        count++;
+//        n = (n - 1) & n;
+//    }
+//
+//    return count;
+//}
+//{
+//    int *pn = &n;
+//    char *pc = (char *)pn;
+//
+//    int count = 0;
+//    for (int i = 0; i < 4; i++) {
+//        char tmp = (*(pc+i));
+//        while (tmp) {
+//            if (tmp & 0x80) {
+//                count++;
+//            }
+//            tmp = tmp << 1;
+//        }
+//    }
+//
+//    return count;
+//}
 
 // 推理， 同jumpFloor
 int Solution::rectCover(int number)

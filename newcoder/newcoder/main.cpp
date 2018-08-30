@@ -11,11 +11,8 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    Solution solution;
-    std::cout << solution.NumberOf1(-1) << std::endl;
-    
+void getRandMoney()
+{
     srand(time(NULL));
     int sum = 0;
     cout << "----small---" << endl;
@@ -36,5 +33,15 @@ int main(int argc, const char * argv[]) {
     sum += big_money;
     cout << "---count----" << endl;
     cout << sum << endl;
+    cout << "---END----" << endl;
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    getRandMoney();
+
+    Solution solution;
+    std::cout << solution.NumberOf1(4) << std::endl;
+
     return 0;
 }
