@@ -9,6 +9,31 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+bool Solution::HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+{
+    if (!pRoot2) {
+        return false;
+    }
+    if (!pRoot1) {
+        return false;
+    }
+    if (pRoot2->val == pRoot1->val) {
+        if (pRoot2->left == NULL && pRoot2->right == NULL) {
+            return true;
+        } else if (pRoot2->left == NULL && pRoot2->right != NULL) {
+            return HasSubtree(pRoot1->right, pRoot2->right);
+        } else if (pRoot2->left != NULL && pRoot2->right == NULL) {
+            return HasSubtree(pRoot1->left, pRoot2->left);
+        } else {
+            return HasSubtree(pRoot1->left, pRoot2->left) && HasSubtree(pRoot1->right, pRoot2->right);
+        }
+    } else {
+        return HasSubtree(pRoot1->left, pRoot2) || HasSubtree(pRoot1->right, pRoot2);
+    }
+    
+    return false;
+}
+
 ListNode* Solution::Merge(ListNode *pHead1, ListNode *pHead2)
 {
     ListNode* resultHead = NULL;

@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 树的子结构
+    bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2);
     // 合并有序链表
     ListNode* Merge(ListNode* pHead1, ListNode* pHead2);
     // 翻转链表
