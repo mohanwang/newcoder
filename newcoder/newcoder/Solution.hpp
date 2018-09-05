@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 翻转链表
+    ListNode* ReverseList(ListNode* pHead);
     // 链表查找倒数第K
     ListNode* FindKthToTail(ListNode* pListHead, unsigned int k);
     // 数组重排序

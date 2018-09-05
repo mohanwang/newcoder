@@ -9,6 +9,25 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+ListNode* Solution::ReverseList(ListNode* pHead)
+{
+    if (!pHead) {
+        return pHead;
+    }
+    ListNode* reverseHead = pHead;
+    ListNode* next = pHead->next;
+    
+    reverseHead->next = NULL;
+    ListNode* nextHead = NULL;
+    while (next) {
+        nextHead = next->next;
+        next->next = reverseHead;
+        reverseHead = next;
+        next = nextHead;
+    }
+    return reverseHead;
+}
+
 ListNode* Solution::FindKthToTail(ListNode* pListHead, unsigned int k)
 {
     ListNode* ptr1 = pListHead;
