@@ -9,6 +9,47 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+ListNode* Solution::Merge(ListNode *pHead1, ListNode *pHead2)
+{
+    ListNode* resultHead = NULL;
+    if (!pHead1) {
+        return pHead2;
+    }
+    if (!pHead2) {
+        return pHead1;
+    }
+    if (pHead1->val <= pHead2->val) {
+        resultHead = pHead1;
+        pHead1 = pHead1->next;
+    } else {
+        resultHead = pHead2;
+        pHead2 = pHead2->next;
+    }
+    resultHead->next = NULL;
+    ListNode* tmp = resultHead;
+    
+    while (pHead1 && pHead2) {
+        if (pHead1->val <= pHead2->val) {
+            tmp->next = pHead1;
+            tmp = tmp->next;
+            pHead1 = pHead1->next;
+            tmp->next = NULL;
+        } else {
+            tmp->next = pHead2;
+            tmp = tmp->next;
+            pHead2 = pHead2->next;
+            tmp->next = NULL;
+        }
+    }
+    if (pHead1) {
+        tmp->next = pHead1;
+    }
+    if (pHead2) {
+        tmp->next = pHead2;
+    }
+    return resultHead;
+}
+
 ListNode* Solution::ReverseList(ListNode* pHead)
 {
     if (!pHead) {

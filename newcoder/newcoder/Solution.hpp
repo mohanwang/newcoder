@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 合并有序链表
+    ListNode* Merge(ListNode* pHead1, ListNode* pHead2);
     // 翻转链表
     ListNode* ReverseList(ListNode* pHead);
     // 链表查找倒数第K
