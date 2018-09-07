@@ -56,6 +56,9 @@ int main(int argc, const char * argv[]) {
     head2->right = new TreeNode(2);
     cout << solution.HasSubtree(head1, head2) << endl;
     
+    solution.Mirror(head2);
+    
+    cout << endl;
 
     return 0;
 }

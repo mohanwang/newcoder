@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 二叉树镜像
+    void Mirror(TreeNode *pRoot);
     // 树的子结构
     bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2);
     // 合并有序链表

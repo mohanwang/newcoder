@@ -9,6 +9,19 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+void Solution::Mirror(TreeNode *pRoot)
+{
+    if (!pRoot) {
+        return;
+    }
+    TreeNode *tmp = pRoot->left;
+    pRoot->left = pRoot->right;
+    pRoot->right = tmp;
+    Mirror(pRoot->left);
+    Mirror(pRoot->right);
+    return;
+}
+
 bool Solution::_internalHasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
 {
     if (!pRoot2) {
