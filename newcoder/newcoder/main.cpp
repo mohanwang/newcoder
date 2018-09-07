@@ -42,6 +42,20 @@ int main(int argc, const char * argv[]) {
 
     Solution solution;
     std::cout << solution.NumberOf1(4) << std::endl;
+    
+    TreeNode *head1 = new TreeNode(8);
+    head1->left = new TreeNode(8);
+    head1->left->left = new TreeNode(9);
+    head1->left->right = new TreeNode(2);
+    head1->left->right->left = new TreeNode(4);
+    head1->left->right->right = new TreeNode(7);
+    head1->right = new TreeNode(7);
+    
+    TreeNode *head2 = new TreeNode(8);
+    head2->left = new TreeNode(9);
+    head2->right = new TreeNode(2);
+    cout << solution.HasSubtree(head1, head2) << endl;
+    
 
     return 0;
 }

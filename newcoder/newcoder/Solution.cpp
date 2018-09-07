@@ -9,6 +9,22 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+bool Solution::_internalHasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+{
+    if (!pRoot2) {
+        return true;
+    }
+    
+    if (!pRoot1) {
+        return false;
+    }
+
+    if (pRoot1->val != pRoot2->val) {
+        return false;
+    }
+    return _internalHasSubtree(pRoot1->left, pRoot2->left) && _internalHasSubtree(pRoot1->right, pRoot2->right);
+}
+
 bool Solution::HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
 {
     if (!pRoot2) {
@@ -17,21 +33,8 @@ bool Solution::HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
     if (!pRoot1) {
         return false;
     }
-    if (pRoot2->val == pRoot1->val) {
-        if (pRoot2->left == NULL && pRoot2->right == NULL) {
-            return true;
-        } else if (pRoot2->left == NULL && pRoot2->right != NULL) {
-            return HasSubtree(pRoot1->right, pRoot2->right);
-        } else if (pRoot2->left != NULL && pRoot2->right == NULL) {
-            return HasSubtree(pRoot1->left, pRoot2->left);
-        } else {
-            return HasSubtree(pRoot1->left, pRoot2->left) && HasSubtree(pRoot1->right, pRoot2->right);
-        }
-    } else {
-        return HasSubtree(pRoot1->left, pRoot2) || HasSubtree(pRoot1->right, pRoot2);
-    }
     
-    return false;
+    return _internalHasSubtree(pRoot1, pRoot2) || HasSubtree(pRoot1->left, pRoot2) || HasSubtree(pRoot1->right, pRoot2);
 }
 
 ListNode* Solution::Merge(ListNode *pHead1, ListNode *pHead2)

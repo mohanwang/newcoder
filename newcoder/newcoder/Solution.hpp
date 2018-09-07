@@ -73,6 +73,9 @@ public:
     bool Find0(int target, vector<vector<int> > array);
     
 private:
+    bool _internalHasSubtree(TreeNode* pRoot1, TreeNode* pRoot2);
+    
+private:
     stack<int> stack1;
     stack<int> stack2;
 };
