@@ -9,6 +9,27 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+bool Solution::IsPopOrder(vector<int> pushV, vector<int> popV)
+{
+    stack<int> tmp;
+    size_t j = 0;
+    for (size_t i = 0; i < pushV.size();)
+    {
+        if (!tmp.empty() && tmp.top() == popV[j]) {
+            j++;
+            tmp.pop();
+        } else {
+            tmp.push(pushV[i++]);
+        }
+    }
+    while (!tmp.empty() && j < popV.size()) {
+        if (tmp.top() == popV[j++]) {
+            tmp.pop();
+        }
+    }
+    return tmp.empty();
+}
+
 void Solution::Mirror(TreeNode *pRoot)
 {
     if (!pRoot) {

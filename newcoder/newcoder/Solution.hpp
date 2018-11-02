@@ -30,6 +30,9 @@ struct ListNode {
 
 class Solution {
 public:
+    // 栈的压入弹出顺序
+    bool IsPopOrder(vector<int> pushV,vector<int> popV);
+
     //包含min函数的栈
     void min_push(int value) {
         stackInt.push(value);
