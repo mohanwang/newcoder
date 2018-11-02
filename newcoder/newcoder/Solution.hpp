@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 从上往下打印二叉树
+    vector<int> PrintFromTopToBottom(TreeNode* root);
     // 栈的压入弹出顺序
     bool IsPopOrder(vector<int> pushV,vector<int> popV);
 

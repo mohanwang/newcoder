@@ -9,6 +9,28 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+vector<int> Solution::PrintFromTopToBottom(TreeNode* root)
+{
+    vector<int> result;
+    deque<TreeNode *> dRoot;
+    if (root) {
+        dRoot.push_back(root);
+    }
+    while (!dRoot.empty()) {
+        TreeNode *tmp = dRoot.front();
+        result.push_back(tmp->val);
+        dRoot.pop_front();
+        if (tmp->left) {
+            dRoot.push_back(tmp->left);
+        }
+        if (tmp->right) {
+            dRoot.push_back(tmp->right);
+        }
+    }
+    return result;
+}
+
+
 bool Solution::IsPopOrder(vector<int> pushV, vector<int> popV)
 {
     stack<int> tmp;
