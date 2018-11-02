@@ -30,6 +30,30 @@ struct ListNode {
 
 class Solution {
 public:
+    //包含min函数的栈
+    void min_push(int value) {
+        stackInt.push(value);
+        if (stackMin.empty()) {
+            stackMin.push(value);
+        } else if (stackMin.top() < value) {
+            stackMin.push(stackMin.top());
+        } else {
+            stackMin.push(value);
+        }
+    }
+    void min_pop() {
+        if (!stackInt.empty()) {
+            stackInt.pop();
+            stackMin.pop();
+        }
+    }
+    int min_top() {
+        return stackInt.top();
+    }
+    
+    int min_min() {
+        return stackMin.top();
+    }
     // 二叉树镜像
     void Mirror(TreeNode *pRoot);
     // 树的子结构
@@ -80,6 +104,8 @@ private:
 private:
     stack<int> stack1;
     stack<int> stack2;
+    stack<int> stackInt;
+    stack<int> stackMin;
 };
 
 
