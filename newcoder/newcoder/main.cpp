@@ -58,6 +58,10 @@ int main(int argc, const char * argv[]) {
     
     solution.Mirror(head2);
     
+    int arr[5] = {4,3,5,2,1};
+    vector<int> seq(arr+0, arr+5);
+    cout << solution.VerifySquenceOfBST(seq) << endl;
+    
     cout << endl;
 
     return 0;

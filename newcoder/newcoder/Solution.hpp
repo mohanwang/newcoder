@@ -30,6 +30,9 @@ struct ListNode {
 
 class Solution {
 public:
+    // 二叉搜索树后序遍历判别
+    bool VerifySquenceOfBST(vector<int> sequence);
+    bool _VerifySquenceOfBST(vector<int> sequence, size_t begin, size_t end);
     // 从上往下打印二叉树
     vector<int> PrintFromTopToBottom(TreeNode* root);
     // 栈的压入弹出顺序

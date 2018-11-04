@@ -9,6 +9,48 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+//[4,8,6,12,16,14,10]
+bool Solution::VerifySquenceOfBST(vector<int> sequence) {
+    if (sequence.empty()) {
+        return false;
+    }
+    return _VerifySquenceOfBST(sequence, 0, sequence.size() - 1);
+}
+
+bool Solution::_VerifySquenceOfBST(vector<int> sequence, size_t begin, size_t end)
+{
+    if (begin > end) {
+        return false;
+    }
+    bool result = true;
+    size_t middle = begin;
+    for (size_t i = begin; i < end;) {
+        if (sequence[i] < sequence[end]) {
+            middle = i++;
+        } else {
+            break;
+        }
+    }
+    for (size_t j = middle+1; j < end; ) {
+        if (sequence[j++] < sequence[end]) {
+            result = false;
+            break;
+        }
+    }
+    if (result) {
+        bool left = true;
+        if (middle > begin) {
+            left = _VerifySquenceOfBST(sequence, begin, middle);
+        }
+        bool right = true;
+        if (middle +1 < end) {
+            right = _VerifySquenceOfBST(sequence, middle+ 1, end - 1);
+        }
+        return left&&right;
+    }
+    return result;
+}
+
 vector<int> Solution::PrintFromTopToBottom(TreeNode* root)
 {
     vector<int> result;
