@@ -30,6 +30,8 @@ struct ListNode {
 
 class Solution {
 public:
+    // 二叉树中和为某一值的路径
+    vector<vector<int> > FindPath(TreeNode* root,int expectNumber);
     // 二叉搜索树后序遍历判别
     bool VerifySquenceOfBST(vector<int> sequence);
     bool _VerifySquenceOfBST(vector<int> sequence, size_t begin, size_t end);

@@ -9,6 +9,59 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+
+vector<vector<int> > Solution::FindPath(TreeNode* root,int expectNumber)
+{
+    vector<vector<int> > result;
+    vector<int> oneResult;
+    
+    if (!root) {
+        return result;
+    }
+    
+    if (root->left == NULL && root->right == NULL) {
+        if (root->val == expectNumber) {
+            oneResult.push_back(root->val);
+            result.push_back(oneResult);
+        }
+        return result;
+    }
+    
+    vector<vector<int> > leftResult;
+    if (root->left) {
+        leftResult = FindPath(root->left, expectNumber - root->val);
+    }
+    
+    if (!leftResult.empty()) {
+        for (vector<vector<int> >::iterator iter = leftResult.begin(); iter != leftResult.end(); ++iter) {
+            vector<int> tmp;
+            tmp.push_back(root->val);
+            for (vector<int>::iterator vIter = iter->begin(); vIter != iter->end(); ++vIter) {
+                tmp.push_back(*vIter);
+            }
+            result.push_back(tmp);
+        }
+    }
+    
+    vector<vector<int> > rightResult;
+    if (root->right) {
+        rightResult = FindPath(root->right, expectNumber -root->val);
+    }
+    
+    if (!rightResult.empty()) {
+        for (vector<vector<int> >::iterator iter = rightResult.begin(); iter != rightResult.end(); ++iter) {
+            vector<int> tmp;
+            tmp.push_back(root->val);
+            for (vector<int>::iterator vIter = iter->begin(); vIter != iter->end(); ++vIter) {
+                tmp.push_back(*vIter);
+            }
+            result.push_back(tmp);
+        }
+    }
+    
+    return result;
+}
+
 //[4,8,6,12,16,14,10]
 bool Solution::VerifySquenceOfBST(vector<int> sequence) {
     if (sequence.empty()) {
