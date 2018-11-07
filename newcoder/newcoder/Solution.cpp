@@ -9,6 +9,56 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+RandomListNode* Solution::Clone(RandomListNode* pHead)
+{
+    if (!pHead) {
+        return NULL;
+    }
+    // 1 copy
+    _CloneCopy(pHead);
+    // 2 set random
+    _CloneConnectRandom(pHead);
+    // 3 get result
+    return _CloneResult(pHead);
+}
+
+void Solution::_CloneCopy(RandomListNode *pHead)
+{
+    RandomListNode *node = pHead;
+    while (node) {
+        RandomListNode *pClone = new RandomListNode(node->label);
+        pClone->next = node->next;
+        node->next = pClone;
+        node = pClone->next;
+    }
+}
+
+void Solution::_CloneConnectRandom(RandomListNode *pHead)
+{
+    RandomListNode *node = pHead;
+    while (node) {
+        RandomListNode *pClone = node->next;
+        if (node->random) {
+            pClone->random = node->random->next;
+        }
+        node = pClone->next;
+    }
+}
+
+RandomListNode* Solution::_CloneResult(RandomListNode *pHead)
+{
+    RandomListNode *node = pHead;
+    RandomListNode *result = node->next;
+    while (node) {
+        RandomListNode *pClone = node->next;
+        node->next = pClone->next;
+        node = node->next;
+        if (node) {
+            pClone->next = node->next;
+        }
+    }
+    return result;
+}
 
 vector<vector<int> > Solution::FindPath(TreeNode* root,int expectNumber)
 {

@@ -28,8 +28,21 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+struct RandomListNode {
+    int label;
+    struct RandomListNode *next, *random;
+    RandomListNode(int x) :
+    label(x), next(NULL), random(NULL) {
+    }
+};
+
 class Solution {
 public:
+    // 复杂链表的复制
+    RandomListNode* Clone(RandomListNode* pHead);
+    void _CloneCopy(RandomListNode *pHead);
+    void _CloneConnectRandom(RandomListNode *pHead);
+    RandomListNode* _CloneResult(RandomListNode *pHead);
     // 二叉树中和为某一值的路径
     vector<vector<int> > FindPath(TreeNode* root,int expectNumber);
     // 二叉搜索树后序遍历判别
