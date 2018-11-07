@@ -38,6 +38,8 @@ struct RandomListNode {
 
 class Solution {
 public:
+    // 二叉搜索树转换成有序的双向链表
+    TreeNode* Convert(TreeNode* pRootOfTree);
     // 复杂链表的复制
     RandomListNode* Clone(RandomListNode* pHead);
     void _CloneCopy(RandomListNode *pHead);

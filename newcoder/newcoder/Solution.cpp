@@ -9,6 +9,34 @@
 #include "Solution.hpp"
 #include <algorithm>
 
+TreeNode* Solution::Convert(TreeNode* pRootOfTree)
+{
+    TreeNode *result = pRootOfTree;
+    if (pRootOfTree == NULL) {
+        return result;
+    }
+    if (!pRootOfTree->left && !pRootOfTree->right) {
+        result = pRootOfTree;
+        return result;
+    }
+    if (pRootOfTree->right) {
+        TreeNode *tmp = Convert(pRootOfTree->right);
+        pRootOfTree->right = tmp;
+        tmp->left = pRootOfTree;
+    }
+    if (pRootOfTree->left) {
+        TreeNode *tmp = Convert(pRootOfTree->left);
+        result = tmp;
+        while (tmp->right) {
+            tmp = tmp->right;
+        }
+        tmp->right = pRootOfTree;
+        pRootOfTree->left = tmp;
+    }
+    
+    return result;
+}
+
 RandomListNode* Solution::Clone(RandomListNode* pHead)
 {
     if (!pHead) {
