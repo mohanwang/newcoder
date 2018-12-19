@@ -12,3 +12,4 @@ C10
 edit file from master
 second edit file from master
 hotfix test.rb
+modify from merge_
